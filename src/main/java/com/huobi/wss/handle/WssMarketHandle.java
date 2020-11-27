@@ -142,7 +142,7 @@ public class WssMarketHandle implements Cloneable {
                             Boolean reconnectResult = webSocketClient.reconnectBlocking();
                             logger.error("重连的结果为：{}", reconnectResult);
                             if (!reconnectResult) {
-                                webSocketClient.closeBlocking();参
+                                webSocketClient.closeBlocking();
                                 logger.error("closeBlocking");
                             }
 
