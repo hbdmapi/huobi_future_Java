@@ -28,6 +28,7 @@ public class HuobiFutureAPIConstants {
     public static final String MARKET_HISTORY_BASIS = "/index/market/history/basis"; // 20.获取基差数据
 
     public static final String CONTRACT_SETTLEMENT_RECORDS = "/api/v1/contract_settlement_records"; // 21.查询平台历史结算记录
+    public static final String CONTRACT_ESTIMATED_SETTLEMENT_PRICE = "/api/v1/contract_estimated_settlement_price"; // 22.获取预估结算价
 
     //合约资产接口
     public static final String CONTRACT_ACCOUNT_INFO = "/api/v1/contract_account_info"; // 1.获取用户账户信息
@@ -74,6 +75,13 @@ public class HuobiFutureAPIConstants {
     public static final String CONTRACT_SWITCH_LEVER_RATE="/api/v1/contract_switch_lever_rate"; //16.切换杠杆
     public static final String CONTRACT_HISORDERS_EXACT="/api/v1/contract_hisorders_exact"; //17.组合查询合约历史委托
     public static final String CONTRACT_MATCHRESULTS_EXACT="/api/v1/contract_matchresults_exact"; //18.组合查询历史成交记录接口
+    public static final String CONTRACT_TPSL_ORDER="/api/v1/contract_tpsl_order"; //19.对仓位设置止盈止损订单
+    public static final String CONTRACT_TPSL_CANCEL="/api/v1/contract_tpsl_cancel"; //20.止盈止损订单撤单
+
+    public static final String CONTRACT_TPSL_CANCELALL="/api/v1/contract_tpsl_cancelall"; //21.止盈止损订单全部撤单
+    public static final String CONTRACT_TPSL_OPENORDERS="/api/v1/contract_tpsl_openorders"; //22.查询止盈止损订单当前委托
+    public static final String CONTRACT_TPSL_HISORDERS="/api/v1/contract_tpsl_hisorders"; //23.查询止盈止损订单历史委托
+    public static final String CONTRACT_RELATION_TPSL_ORDER="/api/v1/contract_relation_tpsl_order"; //24.查询开仓单关联的止盈止损订单详情
 
     //合约划转接口
     public static final String FUTURES_TRANSFER = "/v1/futures/transfer"; // 1.现货-合约账户间进行资金的划转

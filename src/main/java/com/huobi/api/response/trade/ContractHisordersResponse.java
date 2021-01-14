@@ -97,7 +97,10 @@ public class ContractHisordersResponse {
             private Integer status;
             @SerializedName("order_type")
             private Integer orderType;
-
+            @SerializedName("is_tpsl")
+            private Integer isTpsl;
+            @SerializedName("update_time")
+            private Long updateTime;
         }
     }
 }

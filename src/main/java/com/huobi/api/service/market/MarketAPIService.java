@@ -5,7 +5,7 @@ import com.huobi.api.request.account.ContractSettlementRecordsRequest;
 import com.huobi.api.response.market.*;
 
 public interface MarketAPIService {
-    ContractContractCodeResponse getContractContractInfo(String symbol, String contractType, String contractCode);
+    ContractContractInfoResponse getContractContractInfo(String symbol, String contractType, String contractCode);
 
     ContractIndexResponse getContractIndex(String symbol);
 
@@ -48,4 +48,6 @@ public interface MarketAPIService {
     MarketHistoryBasisResponse getMarketHistoryBasis(String symbol,String period,String basisPriceType,Integer size);
 
     ContractSettlementRecordsResponse getContractSettlementRecords(ContractSettlementRecordsRequest request);
+
+    ContractEstimatedSettlementPriceResponse getContractEstimatedSettlementPriceResponse(String symbol);
 }

@@ -17,7 +17,7 @@ public class MarketAPITest implements BaseTest {
 
     @Test
     public void getContractContractInfo() {
-        ContractContractCodeResponse result =
+        ContractContractInfoResponse result =
                 huobiAPIService.getContractContractInfo("", "", "");
         logger.debug("1.获取合约信息：{}", JSON.toJSONString(result));
     }
@@ -172,6 +172,12 @@ public class MarketAPITest implements BaseTest {
                 .build();
         ContractSettlementRecordsResponse response = huobiAPIService.getContractSettlementRecords(request);
         logger.debug("21.查询平台历史结算记录：{}", JSON.toJSONString(response));
+    }
+
+    @Test
+    public void getContractEstimatedSettlementPriceResponse(){
+        ContractEstimatedSettlementPriceResponse response=huobiAPIService.getContractEstimatedSettlementPriceResponse("btc");
+        logger.debug("22.获取预估结算价: {}",JSON.toJSONString(response));
     }
 
 }

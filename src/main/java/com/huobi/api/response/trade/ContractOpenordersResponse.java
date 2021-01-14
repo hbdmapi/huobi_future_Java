@@ -99,6 +99,8 @@ public class ContractOpenordersResponse {
             private BigDecimal profit;
             @SerializedName("order_type")
             private Integer orderType;
+            @SerializedName("is_tpsl")
+            private Integer isTpsl;
 
         }
     }

@@ -41,6 +41,12 @@ public class ContractOpenInterestResponse {
         private String contractType;
         @SerializedName("contract_code")
         private String contractCode;
+        @SerializedName("trade_amount")
+        private BigDecimal tradeAmount;
+        @SerializedName("trade_volume")
+        private BigDecimal tradeVolume;
+        @SerializedName("trade_turnover")
+        private BigDecimal tradeTurnover;
 
     }
 }

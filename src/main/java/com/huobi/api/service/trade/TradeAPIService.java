@@ -39,4 +39,16 @@ public interface TradeAPIService {
     ContractMatchresultsExactResponse contractMatchresultsExactRequest(ContractMatchresultsExactRequest request);//组合查询历史成交记录接口
 
     ContractTriggerHisordersResponse contractTriggerHisorders(ContractTriggerHisordersRequest request);//获取计划委托历史委托
+
+    ContractTpslOrderResponse contractTpslOrder(ContractTpslOrderRequest request);
+
+    ContractTpslCancelResponse contractTpslCancelResponse(ContractTpslCancelRequest request);
+
+    ContractTpslCancelallResponse contractTpslCancelallResponse(ContractTpslCancelallRequest request);
+
+    ContractTpslOpenordersResponse contractTpslOpenordersResponse(ContractTpslOpenordersRequest request);
+
+    ContractTpslHisordersResponse contractTpslHisordersResponse(ContractTpslHisordersRequset request);
+
+    ContractRelationTpslOrderResponse contractRelationTpslOrderResponse(ContractRelationTpslOrderRequest request);
 }

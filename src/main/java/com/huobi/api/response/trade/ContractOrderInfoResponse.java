@@ -82,6 +82,8 @@ public class ContractOrderInfoResponse {
         private BigDecimal marginFrozen;
         private BigDecimal profit;
         private Integer status;
+        @SerializedName("is_tpsl")
+        private Integer isTpsl;
 
     }
 }

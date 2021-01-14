@@ -37,4 +37,10 @@ public class ContractOrderRequest {
     private OffsetEnum offset;//"open":开 "close":平
     private Integer leverRate;//杠杆倍数[“开仓”若有10倍多单，就不能再下20倍多单]
     private String orderPriceType;//订单报价类型 "limit":限价 "opponent":对手价 "post_only":只做maker单,post only下单只受用户持仓数量限制,optimal_5：最优5档、optimal_10：最优10档、optimal_20：最优20档
+    private BigDecimal tpTriggerPrice;
+    private BigDecimal tpOrderPrice;
+    private String tpOrderPriceType;
+    private BigDecimal slTriggerPrice;
+    private BigDecimal slOrderPrice;
+    private String slOrderPriceType;
 }

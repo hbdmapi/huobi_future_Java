@@ -132,6 +132,7 @@ public class TradeAPITest implements BaseTest {
                 .type(1)
                 .status(0)
                 .createDate(90)
+                .sortBy("update_time")
                 .build();
         ContractHisordersResponse response =
                 huobiAPIService.contractHisordersRequest(request);
@@ -269,9 +270,86 @@ public class TradeAPITest implements BaseTest {
                 .createDate(90)
                 .pageIndex(1)
                 .pageSize(20)
+                .sortBy("update_time")
                 .build();
         ContractTriggerHisordersResponse response = huobiAPIService.contractTriggerHisorders(request);
         logger.debug("18.获取计划委托历史委托:{}", JSON.toJSONString(response));
     }
 
+    @Test
+    public void contractTpslOrderRequest(){
+        ContractTpslOrderRequest request = ContractTpslOrderRequest.builder()
+                .symbol("xrp")
+                .contractCode("xrp210326")
+                .contractType("quarter")
+                .direction("buy")
+                .volume("1")
+                .tpTriggerPrice(BigDecimal.valueOf(0.2))
+                .tpOrderPrice(BigDecimal.valueOf(0.2))
+                .tpOrderPriceType("limit")
+                .slOrderPrice(BigDecimal.valueOf(0.5))
+                .slOrderPriceType("optimal_5")
+                .slTriggerPrice(BigDecimal.valueOf(0.5))
+                .build();
+        ContractTpslOrderResponse response=huobiAPIService.contractTpslOrder(request);
+        logger.debug("19.对仓位设置止盈止损订单:{}",JSON.toJSONString(response));
+    }
+
+    @Test
+    public void contractTpslCancelRequest(){
+        ContractTpslCancelRequest request= ContractTpslCancelRequest.builder()
+                .symbol("xrp")
+                .orderId("799291000371585024")
+                .build();
+        ContractTpslCancelResponse response=huobiAPIService.contractTpslCancelResponse(request);
+        logger.debug("20.止盈止损撤单:{}",JSON.toJSONString(response));
+    }
+
+    @Test
+    public void contractTpslCancelallRequest(){
+        ContractTpslCancelallRequest request= ContractTpslCancelallRequest.builder()
+                .symbol("xrp")
+                .contractCode("xrp210326")
+                .contractType("quarter")
+                .build();
+        ContractTpslCancelallResponse response=huobiAPIService.contractTpslCancelallResponse(request);
+        logger.debug("21.止盈止损全部撤单:{}",JSON.toJSONString(response));
+    }
+
+    @Test
+    public void contractTpslOpenorderRequest(){
+        ContractTpslOpenordersRequest request= ContractTpslOpenordersRequest.builder()
+                .symbol("xrp")
+                .contractCode("")
+                .pageIndex(1)
+                .pageSize(20)
+                .build();
+        ContractTpslOpenordersResponse response=huobiAPIService.contractTpslOpenordersResponse(request);
+        logger.debug("22.查询止盈止损订单当前委托:{}",JSON.toJSONString(response));
+    }
+
+    @Test
+    public void contractTpslHisorderRequest(){
+        ContractTpslHisordersRequset requset= ContractTpslHisordersRequset.builder()
+                .symbol("XRP")
+                .contractCode("xrp210326")
+                .status("0")
+                .createDate(30l)
+                .pageIndex(1)
+                .pageSize(20)
+                .sortBy("update_time")
+                .build();
+        ContractTpslHisordersResponse response=huobiAPIService.contractTpslHisordersResponse(requset);
+        logger.debug("23.查询止盈止损订单历史委托:{}",JSON.toJSONString(response));
+    }
+
+    @Test
+    public void contractRelationTpslOrderRequest(){
+        ContractRelationTpslOrderRequest request= ContractRelationTpslOrderRequest.builder()
+                .symbol("xrp")
+                .orderId(799289975731789824l)
+                .build();
+        ContractRelationTpslOrderResponse response=huobiAPIService.contractRelationTpslOrderResponse(request);
+        logger.debug("24.查询开仓单关联的止盈止损订单详情:{}",JSON.toJSONString(response));
+    }
 }

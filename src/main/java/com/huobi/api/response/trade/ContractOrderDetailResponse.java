@@ -83,6 +83,8 @@ public class ContractOrderDetailResponse {
         private Integer totalSize;
         @SerializedName("current_page")
         private Integer currentPage;
+        @SerializedName("is_tpsl")
+        private Integer isTpsl;
         private List<TradesBean> trades;
 
         @Data

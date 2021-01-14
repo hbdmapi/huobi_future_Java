@@ -26,7 +26,7 @@ public class MarketAPIServiceImpl implements MarketAPIService {
      * @return 如果不填，默认查询所有所有合约信息; 如果contract_code填了值，那就按照contract_code去查询; 如果contract_code没有填值，则按照symbol+contract_type去查询;
      */
     @Override
-    public ContractContractCodeResponse getContractContractInfo(String symbol, String contractType, String contractCode) {
+    public ContractContractInfoResponse getContractContractInfo(String symbol, String contractType, String contractCode) {
         String body;
         try {
             Map<String, Object> params = new HashMap<>();
@@ -40,7 +40,7 @@ public class MarketAPIServiceImpl implements MarketAPIService {
                 params.put("contract_code", contractCode);
             }
             body = HbdmHttpClient.getInstance().doGet(url_prex + HuobiFutureAPIConstants.CONTRACT_CONTRACT_INFO, params);
-            ContractContractCodeResponse response = JSON.parseObject(body, ContractContractCodeResponse.class);
+            ContractContractInfoResponse response = JSON.parseObject(body, ContractContractInfoResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())) {
                 return response;
             }
@@ -525,4 +525,26 @@ public class MarketAPIServiceImpl implements MarketAPIService {
         }
         throw new ApiException(body);
     }
+
+    @Override
+    public ContractEstimatedSettlementPriceResponse getContractEstimatedSettlementPriceResponse(String symbol) {
+        String body;
+        try {
+            Map<String, Object> params = new HashMap<>();
+            if (StringUtils.isNotEmpty(symbol)){
+                params.put("symbol",symbol);
+            }
+            body = HbdmHttpClient.getInstance().doGet(url_prex + HuobiFutureAPIConstants.CONTRACT_ESTIMATED_SETTLEMENT_PRICE, params);
+            logger.debug("body:{}",body);
+            ContractEstimatedSettlementPriceResponse response = JSON.parseObject(body, ContractEstimatedSettlementPriceResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+
+        } catch (Exception e) {
+            body = e.getMessage();
+        }
+        throw new ApiException(body);
+    }
+
 }

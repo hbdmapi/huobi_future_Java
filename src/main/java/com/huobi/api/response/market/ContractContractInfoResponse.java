@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class ContractContractCodeResponse {
+public class ContractContractInfoResponse {
 
 
     /**
@@ -52,6 +52,10 @@ public class ContractContractCodeResponse {
         private String createDate;
         @SerializedName("contract_status")
         private Integer contractStatus;
+        @SerializedName("settlement_time")
+        private Long settlementTime;
+        @SerializedName("delivery_time")
+        private Long deliveryTime;
 
     }
 }
