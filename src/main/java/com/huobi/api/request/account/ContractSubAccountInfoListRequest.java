@@ -1,16 +1,14 @@
-package com.huobi.api.request.trade;
+package com.huobi.api.request.account;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-@AllArgsConstructor
-@Data
 @Builder
-public class ContractTriggerOpenordersRequest {
+@Data
+@AllArgsConstructor
+public class ContractSubAccountInfoListRequest {
     private String symbol;
-    private String contractCode;
     private Integer pageIndex;
     private Integer pageSize;
-    private Integer trade_type;
 }

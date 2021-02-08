@@ -9,4 +9,5 @@ public class ContractTpslCancelallRequest {
     private String symbol;
     private String contractCode;
     private String contractType;
+    private String direction;
 }

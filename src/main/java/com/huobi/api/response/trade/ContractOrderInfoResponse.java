@@ -84,6 +84,8 @@ public class ContractOrderInfoResponse {
         private Integer status;
         @SerializedName("is_tpsl")
         private Integer isTpsl;
+        @SerializedName("real_profit")
+        private BigDecimal realProfit;
 
     }
 }

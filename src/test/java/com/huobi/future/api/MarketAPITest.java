@@ -180,4 +180,16 @@ public class MarketAPITest implements BaseTest {
         logger.debug("22.获取预估结算价: {}",JSON.toJSONString(response));
     }
 
+    @Test
+    public void getMarketBatchMerged(){
+        MarketBatchMergedResponse response=huobiAPIService.getMarketBatchMerged("");
+        logger.debug("23.批量获取聚合行情: {}",JSON.toJSONString(response));
+    }
+
+    @Test
+    public void getContractLadderMargin(){
+        ContractLadderMarginResponse response=huobiAPIService.getContractLadderMargin("btc");
+        logger.debug("24.获取平台阶梯保证金: {}",JSON.toJSONString(response));
+    }
+
 }

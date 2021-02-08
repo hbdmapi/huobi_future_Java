@@ -11,4 +11,6 @@ public class ContractTriggerCancelallRequest {
     private String symbol;
     private String contractCode;
     private String contractType;
+    private String direction;
+    private String offset;
 }

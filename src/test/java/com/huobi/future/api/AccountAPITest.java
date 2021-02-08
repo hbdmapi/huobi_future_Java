@@ -176,4 +176,20 @@ public class AccountAPITest implements BaseTest {
         logger.debug("17.查询用户可用杠杆倍数：{}", JSON.toJSONString(response));
     }
 
+    @Test
+    public void getContractSubAuth(){
+        ContractSubAuthResponse response=huobiAPIService.getContractSubAuth("1234,12344",1);
+        logger.debug("18.批量设置子账户交易权限：{}", JSON.toJSONString(response));
+    }
+
+    @Test
+    public void getContractSubAccountInfoLIst(){
+        ContractSubAccountInfoListRequest request= ContractSubAccountInfoListRequest.builder()
+                .symbol("btc")
+                .pageIndex(1)
+                .pageSize(20)
+                .build();
+        ContractSubAccountInfoListResponse response=huobiAPIService.getContractSubAccountInfoList(request);
+        logger.debug("19.批量获取子账户资产信息：{}", JSON.toJSONString(response));
+    }
 }

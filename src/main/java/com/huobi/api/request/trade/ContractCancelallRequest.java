@@ -19,6 +19,7 @@ public class ContractCancelallRequest {
     private String symbol;//"BTC","ETH"...
     private String contractType;//合约类型 ("this_week":当周 "next_week":下周 "quarter":季度)
     private String contractCode;//BTC180914
-
+    private String direction;
+    private String offset;
 
 }

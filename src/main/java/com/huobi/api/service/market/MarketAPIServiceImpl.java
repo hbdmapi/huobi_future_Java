@@ -547,4 +547,45 @@ public class MarketAPIServiceImpl implements MarketAPIService {
         throw new ApiException(body);
     }
 
+    @Override
+    public MarketBatchMergedResponse getMarketBatchMerged(String symbol) {
+        String body;
+        try {
+            Map<String, Object> params = new HashMap<>();
+            if (StringUtils.isNotEmpty(symbol)){
+                params.put("symbol",symbol);
+            }
+            body = HbdmHttpClient.getInstance().doGet(url_prex + HuobiFutureAPIConstants.BATCH_MERGED, params);
+            logger.debug("body:{}",body);
+            MarketBatchMergedResponse response = JSON.parseObject(body, MarketBatchMergedResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+
+        } catch (Exception e) {
+            body = e.getMessage();
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public ContractLadderMarginResponse getContractLadderMargin(String symbol) {
+        String body;
+        try {
+            Map<String, Object> params = new HashMap<>();
+            if (StringUtils.isNotEmpty(symbol)){
+                params.put("symbol",symbol);
+            }
+            body = HbdmHttpClient.getInstance().doGet(url_prex + HuobiFutureAPIConstants.CONTRACT_LADDER_MARGIN, params);
+            logger.debug("body:{}",body);
+            ContractLadderMarginResponse response = JSON.parseObject(body, ContractLadderMarginResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+
+        } catch (Exception e) {
+            body = e.getMessage();
+        }
+        throw new ApiException(body);
+    }
 }

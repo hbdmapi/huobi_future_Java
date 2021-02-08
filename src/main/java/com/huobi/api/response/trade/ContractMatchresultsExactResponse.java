@@ -63,6 +63,8 @@ public class ContractMatchresultsExactResponse {
             private String feeAsset;
             @SerializedName("order_source")
             private String orderSource;
+            @SerializedName("real_profit")
+            private BigDecimal realProfit;
         }
     }
 

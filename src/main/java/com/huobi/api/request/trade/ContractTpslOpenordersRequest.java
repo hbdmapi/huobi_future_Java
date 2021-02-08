@@ -11,4 +11,5 @@ public class ContractTpslOpenordersRequest {
     private String contractCode;
     private Integer pageIndex;
     private Integer pageSize;
+    private Integer trade_type;
 }

@@ -29,6 +29,8 @@ public class HuobiFutureAPIConstants {
 
     public static final String CONTRACT_SETTLEMENT_RECORDS = "/api/v1/contract_settlement_records"; // 21.查询平台历史结算记录
     public static final String CONTRACT_ESTIMATED_SETTLEMENT_PRICE = "/api/v1/contract_estimated_settlement_price"; // 22.获取预估结算价
+    public static final String BATCH_MERGED = "/market/detail/batch_merged"; // 23.批量获取聚合行情
+    public static final String CONTRACT_LADDER_MARGIN = "/api/v1/contract_ladder_margin"; // 24.获取平台阶梯保证金
 
     //合约资产接口
     public static final String CONTRACT_ACCOUNT_INFO = "/api/v1/contract_account_info"; // 1.获取用户账户信息
@@ -51,6 +53,8 @@ public class HuobiFutureAPIConstants {
 
     public static final String CONTRACT_API_TRADING_STATUS="/api/v1/contract_api_trading_status"; //16、获取用户的API指标禁用信息
     public static final String CONTRACT_AVAILABLE_LEVEL_RATE="/api/v1/contract_available_level_rate"; //17、查询用户可用杠杆倍数
+    public static final String CONTRACT_SUB_AUTH="/api/v1/contract_sub_auth"; //18、批量设置子账户交易权限
+    public static final String CONTRACT_SUB_ACCOUNT_INFO_LIST="/api/v1/contract_sub_account_info_list"; //19、批量获取子账户资产信息
 
 
     //合约交易接口

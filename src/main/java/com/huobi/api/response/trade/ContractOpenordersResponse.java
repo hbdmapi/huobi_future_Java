@@ -101,7 +101,8 @@ public class ContractOpenordersResponse {
             private Integer orderType;
             @SerializedName("is_tpsl")
             private Integer isTpsl;
-
+            @SerializedName("real_profit")
+            private BigDecimal realProfit;
         }
     }
 }

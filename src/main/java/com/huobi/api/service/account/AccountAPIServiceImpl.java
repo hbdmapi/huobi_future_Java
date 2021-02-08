@@ -290,7 +290,6 @@ public class AccountAPIServiceImpl implements AccountAPIService {
             if ("ok".equalsIgnoreCase(response.getStatus())) {
                 return response;
             }
-
         } catch (Exception e) {
             throw new ApiException(e);
         }
@@ -406,5 +405,48 @@ public class AccountAPIServiceImpl implements AccountAPIService {
         throw new ApiException(body);
     }
 
+    @Override
+    public ContractSubAuthResponse getContractSubAuth(String subUid, Integer subAuth) {
+        String body;
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("sub_uid", subUid);
+            params.put("sub_auth",subAuth);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiFutureAPIConstants.CONTRACT_SUB_AUTH, params);
+            logger.debug("body:{}",body);
+            ContractSubAuthResponse response = JSON.parseObject(body, ContractSubAuthResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
 
+    @Override
+    public ContractSubAccountInfoListResponse getContractSubAccountInfoList(ContractSubAccountInfoListRequest request) {
+        String body;
+        try {
+            Map<String, Object> params = new HashMap<>();
+            if (StringUtils.isNotEmpty(request.getSymbol())){
+                params.put("symbol",request.getSymbol().toUpperCase());
+            }
+            if (request.getPageIndex()!=null){
+                params.put("page_index",request.getPageIndex());
+            }
+            if (request.getPageSize()!=null){
+                params.put("page_size",request.getPageSize());
+            }
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiFutureAPIConstants.CONTRACT_SUB_ACCOUNT_INFO_LIST, params);
+            logger.debug("body:{}",body);
+            ContractSubAccountInfoListResponse response = JSON.parseObject(body, ContractSubAccountInfoListResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
 }

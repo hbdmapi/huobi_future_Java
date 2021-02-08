@@ -50,4 +50,8 @@ public interface MarketAPIService {
     ContractSettlementRecordsResponse getContractSettlementRecords(ContractSettlementRecordsRequest request);
 
     ContractEstimatedSettlementPriceResponse getContractEstimatedSettlementPriceResponse(String symbol);
+
+    MarketBatchMergedResponse getMarketBatchMerged(String symbol);
+
+    ContractLadderMarginResponse getContractLadderMargin(String symbol);
 }

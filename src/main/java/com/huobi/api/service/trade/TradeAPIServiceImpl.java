@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,19 +55,19 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             if (request.getClientOrderId() != null) {
                 params.put("client_order_id", request.getClientOrderId());
             }
-            if (request.getTpTriggerPrice()!=null){
+            if (request.getTpTriggerPrice()!=null && request.getTpTriggerPrice()!= BigDecimal.valueOf(0)){
                 params.put("tp_trigger_price",request.getTpTriggerPrice());
             }
-            if (request.getTpOrderPrice()!=null){
+            if (request.getTpOrderPrice()!=null && request.getTpOrderPrice()!= BigDecimal.valueOf(0)){
                 params.put("tp_order_price",request.getTpOrderPrice());
             }
             if (request.getTpOrderPriceType()!=null){
                 params.put("tp_order_price_type",request.getTpOrderPriceType());
             }
-            if (request.getSlTriggerPrice()!=null){
+            if (request.getSlTriggerPrice()!=null && request.getSlTriggerPrice()!= BigDecimal.valueOf(0)){
                 params.put("sl_trigger_price",request.getSlTriggerPrice());
             }
-            if (request.getSlOrderPrice()!=null){
+            if (request.getSlOrderPrice()!=null && request.getSlOrderPrice()!= BigDecimal.valueOf(0)){
                 params.put("sl_order_price",request.getSlOrderPrice());
             }
             if (request.getSlOrderPriceType()!=null){
@@ -111,19 +112,19 @@ public class TradeAPIServiceImpl implements TradeAPIService {
                         if (e.getClientOrderId() != null) {
                             params.put("client_order_id", e.getClientOrderId());
                         }
-                        if (e.getTpTriggerPrice()!=null){
+                        if (e.getTpTriggerPrice()!=null && e.getTpTriggerPrice()!= BigDecimal.valueOf(0)){
                             params.put("tp_trigger_price",e.getTpTriggerPrice());
                         }
-                        if (e.getTpOrderPrice()!=null){
+                        if (e.getTpOrderPrice()!=null && e.getTpOrderPrice()!= BigDecimal.valueOf(0)){
                             params.put("tp_order_price",e.getTpOrderPrice());
                         }
                         if (e.getTpOrderPriceType()!=null){
                             params.put("tp_order_price_type",e.getTpOrderPriceType());
                         }
-                        if (e.getSlTriggerPrice()!=null){
+                        if (e.getSlTriggerPrice()!=null && e.getSlTriggerPrice() != BigDecimal.valueOf(0)){
                             params.put("sl_trigger_price",e.getSlTriggerPrice());
                         }
-                        if (e.getSlOrderPrice()!=null){
+                        if (e.getSlOrderPrice()!=null && e.getSlOrderPrice()!= BigDecimal.valueOf(0)){
                             params.put("sl_order_price",e.getSlOrderPrice());
                         }
                         if (e.getSlOrderPriceType()!=null){
@@ -195,6 +196,12 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             }
             if (StringUtils.isNotEmpty(request.getContractType())) {
                 params.put("contract_type", request.getContractType());
+            }
+            if (request.getDirection()!=null){
+                params.put("direction",request.getDirection());
+            }
+            if (request.getOffset()!=null){
+                params.put("offset",request.getOffset());
             }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiFutureAPIConstants.CONTRACT_CANCELALL, params);
             ContractCancelallResponse response = JSON.parseObject(body, ContractCancelallResponse.class);
@@ -286,6 +293,12 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             }
             if (request.getPageSize() != null) {
                 params.put("page_size", request.getPageSize());
+            }
+            if (request.getSortBy()!=null){
+                params.put("sort_by",request.getSortBy());
+            }
+            if (request.getTradeType()!=null){
+                params.put("trade_type",request.getTradeType());
             }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiFutureAPIConstants.CONTRACT_OPENORDERS, params);
             ContractOpenordersResponse response = JSON.parseObject(body, ContractOpenordersResponse.class);
@@ -471,7 +484,15 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             if (StringUtils.isNotEmpty(request.getContractCode())){
                 params.put("contract_code",request.getContractCode().toUpperCase());
             }
-            params.put("contract_type",request.getContractType());
+            if (request.getDirection()!=null){
+                params.put("direction",request.getDirection());
+            }
+            if (request.getOffset()!=null){
+                params.put("offset",request.getOffset());
+            }
+            if (request.getContractType()!=null) {
+                params.put("contract_type", request.getContractType());
+            }
             body=HbdmHttpClient.getInstance().doPost(api_key,secret_key,url_prex+HuobiFutureAPIConstants.CONTRACT_TRIGGER_CANCELALL,params);
             ContractTriggerCancelallResponse response=JSON.parseObject(body,ContractTriggerCancelallResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())){
@@ -498,6 +519,9 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             }
             if(request.getPageSize()!=null){
                 params.put("page_size",request.getPageSize());
+            }
+            if (request.getTrade_type()!=null){
+                params.put("trade_type",request.getTrade_type());
             }
             body=HbdmHttpClient.getInstance().doPost(api_key,secret_key,url_prex + HuobiFutureAPIConstants.CONTRACT_TRIGGER_OPENORDERS,params);
             ContractTriggerOpenordersResponse response=JSON.parseObject(body,ContractTriggerOpenordersResponse.class);
@@ -648,22 +672,22 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             }
             params.put("direction",request.getDirection());
             params.put("volume",request.getVolume());
-            if (request.getTpOrderPrice()!=null){
-                params.put("tp_trigger_price",request.getTpOrderPrice());
+            if (request.getTpTriggerPrice()!=null && request.getTpTriggerPrice()!=BigDecimal.valueOf(0)){
+                params.put("tp_trigger_price",request.getTpTriggerPrice());
             }
-            if (request.getTpOrderPrice()!=null){
+            if (request.getTpOrderPrice()!=null && request.getTpOrderPrice()!=BigDecimal.valueOf(0)){
                 params.put("tp_order_price",request.getTpOrderPrice());
             }
             if (request.getTpOrderPriceType()!=null){
                 params.put("tp_order_price_type",request.getTpOrderPriceType());
             }
-            if (request.getSlOrderPrice()!=null){
+            if (request.getSlOrderPrice()!=null && request.getSlOrderPrice()!=BigDecimal.valueOf(0)){
                 params.put("sl_order_price",request.getSlOrderPrice());
             }
             if (request.getSlOrderPriceType()!=null){
                 params.put("sl_order_price_type",request.getSlOrderPriceType());
             }
-            if (request.getSlTriggerPrice()!=null){
+            if (request.getSlTriggerPrice()!=null && request.getSlTriggerPrice()!=BigDecimal.valueOf(0)){
                 params.put("sl_trigger_price",request.getSlTriggerPrice());
             }
             body=HbdmHttpClient.getInstance().doPost(api_key,secret_key,url_prex + HuobiFutureAPIConstants.CONTRACT_TPSL_ORDER,params);
@@ -710,6 +734,9 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             if (request.getContractType()!=null){
                 params.put("contract_type",request.getContractType());
             }
+            if (request.getDirection()!=null){
+                params.put("direction",request.getDirection());
+            }
             body=HbdmHttpClient.getInstance().doPost(api_key,secret_key,url_prex + HuobiFutureAPIConstants.CONTRACT_TPSL_CANCELALL,params);
             logger.debug("body:{}",body);
             ContractTpslCancelallResponse response=JSON.parseObject(body,ContractTpslCancelallResponse.class);
@@ -736,6 +763,9 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             }
             if (request.getPageSize()!=null){
                 params.put("page_size",request.getPageSize());
+            }
+            if (request.getTrade_type()!=null){
+                params.put("trade_type",request.getTrade_type());
             }
             body=HbdmHttpClient.getInstance().doPost(api_key,secret_key,url_prex + HuobiFutureAPIConstants.CONTRACT_TPSL_OPENORDERS,params);
             ContractTpslOpenordersResponse response=JSON.parseObject(body,ContractTpslOpenordersResponse.class);

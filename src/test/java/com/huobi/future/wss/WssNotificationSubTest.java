@@ -13,8 +13,10 @@ import java.util.List;
 public class WssNotificationSubTest {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
-    private String URL = "wss://api.hbdm.com/notification";//订单推送访问地址.更换请求的域名时，需将WssNotificationHandle类中的addAuth()方法里面的域名也一起替换掉。
-    WssNotificationHandle wssNotificationHandle = new WssNotificationHandle(URL, "", "");
+    private String host="api.hbdm.com";
+    private String url="/swap-notification";//注意地址上一定要带上"/"。
+    //private String URL = "wss://api.hbdm.com/notification";//订单推送访问地址.更换请求的域名时，需将WssNotificationHandle类中的addAuth()方法里面的域名也一起替换掉。
+    WssNotificationHandle wssNotificationHandle = new WssNotificationHandle( host , url , "", "");
 
 
     @Test

@@ -72,6 +72,8 @@ public class ContractHisordersExactResponse {
             private String liquidationType;
             @SerializedName("is_tpsl")
             private Integer isTpsl;
+            @SerializedName("real_profit")
+            private BigDecimal realProfit;
         }
     }
 }
