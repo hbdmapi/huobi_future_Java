@@ -55,7 +55,7 @@ public class HuobiFutureAPIConstants {
     public static final String CONTRACT_AVAILABLE_LEVEL_RATE="/api/v1/contract_available_level_rate"; //17、查询用户可用杠杆倍数
     public static final String CONTRACT_SUB_AUTH="/api/v1/contract_sub_auth"; //18、批量设置子账户交易权限
     public static final String CONTRACT_SUB_ACCOUNT_INFO_LIST="/api/v1/contract_sub_account_info_list"; //19、批量获取子账户资产信息
-
+    public static final String CONTRACT_BALANCE_VALUATION = "/api/v1/contract_balance_valuation"; // 20.获取账户总资产估值
 
     //合约交易接口
     public static final String CONTRACT_ORDER = "/api/v1/contract_order"; // 1.合约下单

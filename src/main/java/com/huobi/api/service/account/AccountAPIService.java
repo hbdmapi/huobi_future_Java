@@ -47,4 +47,6 @@ public interface AccountAPIService {
     ContractSubAuthResponse getContractSubAuth(String subUid,Integer subAuth);
 
     ContractSubAccountInfoListResponse getContractSubAccountInfoList(ContractSubAccountInfoListRequest request);
+
+    ContractBalanceValuationResponse getContractBalanceValuation(String ValuationAsset);
 }

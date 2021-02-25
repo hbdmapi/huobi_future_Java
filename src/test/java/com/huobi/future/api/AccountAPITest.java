@@ -192,4 +192,10 @@ public class AccountAPITest implements BaseTest {
         ContractSubAccountInfoListResponse response=huobiAPIService.getContractSubAccountInfoList(request);
         logger.debug("19.批量获取子账户资产信息：{}", JSON.toJSONString(response));
     }
+
+    @Test
+    public void getContractBalanceValuation(){
+        ContractBalanceValuationResponse response=huobiAPIService.getContractBalanceValuation("");
+        logger.debug("20.获取账户总资产估值：{}", JSON.toJSONString(response));
+    }
 }

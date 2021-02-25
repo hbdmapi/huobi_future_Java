@@ -49,7 +49,7 @@ public class MarketTradeResponse {
             private Long id;
             private String price;
             private Long ts;
-
+            private String symbol;
         }
     }
 }

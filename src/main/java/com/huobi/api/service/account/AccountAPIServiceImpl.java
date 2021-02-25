@@ -449,4 +449,24 @@ public class AccountAPIServiceImpl implements AccountAPIService {
         }
         throw new ApiException(body);
     }
+
+    @Override
+    public ContractBalanceValuationResponse getContractBalanceValuation(String ValuationAsset) {
+        String body;
+        try {
+            Map<String, Object> params = new HashMap<>();
+            if (StringUtils.isNotEmpty(ValuationAsset)){
+                params.put("valuation_asset",ValuationAsset.toUpperCase());
+            }
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiFutureAPIConstants.CONTRACT_BALANCE_VALUATION, params);
+            logger.debug("body:{}",body);
+            ContractBalanceValuationResponse response = JSON.parseObject(body, ContractBalanceValuationResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
 }
