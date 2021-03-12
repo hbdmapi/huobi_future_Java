@@ -54,4 +54,6 @@ public interface MarketAPIService {
     MarketBatchMergedResponse getMarketBatchMerged(String symbol);
 
     ContractLadderMarginResponse getContractLadderMargin(String symbol);
+
+    MarkPriceKlineResponse getMarkPriceKline(String symbol,String period,Integer size);
 }

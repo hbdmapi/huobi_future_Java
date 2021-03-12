@@ -31,6 +31,7 @@ public class HuobiFutureAPIConstants {
     public static final String CONTRACT_ESTIMATED_SETTLEMENT_PRICE = "/api/v1/contract_estimated_settlement_price"; // 22.获取预估结算价
     public static final String BATCH_MERGED = "/market/detail/batch_merged"; // 23.批量获取聚合行情
     public static final String CONTRACT_LADDER_MARGIN = "/api/v1/contract_ladder_margin"; // 24.获取平台阶梯保证金
+    public static final String MARK_PRICE_KLINE = "/index/market/history/mark_price_kline"; // 25.获取标记价格的K线数据
 
     //合约资产接口
     public static final String CONTRACT_ACCOUNT_INFO = "/api/v1/contract_account_info"; // 1.获取用户账户信息

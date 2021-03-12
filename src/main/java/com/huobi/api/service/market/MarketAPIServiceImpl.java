@@ -588,4 +588,25 @@ public class MarketAPIServiceImpl implements MarketAPIService {
         }
         throw new ApiException(body);
     }
+
+    @Override
+    public MarkPriceKlineResponse getMarkPriceKline(String symbol, String period, Integer size) {
+        String body;
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("symbol",symbol.toUpperCase());
+            params.put("period",period);
+            params.put("size",size);
+            body = HbdmHttpClient.getInstance().doGet(url_prex + HuobiFutureAPIConstants.MARK_PRICE_KLINE, params);
+            logger.debug("body:{}",body);
+            MarkPriceKlineResponse response = JSON.parseObject(body, MarkPriceKlineResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+
+        } catch (Exception e) {
+            body = e.getMessage();
+        }
+        throw new ApiException(body);
+    }
 }

@@ -192,4 +192,9 @@ public class MarketAPITest implements BaseTest {
         logger.debug("24.获取平台阶梯保证金: {}",JSON.toJSONString(response));
     }
 
+    @Test
+    public void getMarkPriceKline(){
+        MarkPriceKlineResponse response=huobiAPIService.getMarkPriceKline("btc_cq","5min",10);
+        logger.debug("25.获取标记价格的K线数据: {}",JSON.toJSONString(response));
+    }
 }
