@@ -197,4 +197,11 @@ public class MarketAPITest implements BaseTest {
         MarkPriceKlineResponse response=huobiAPIService.getMarkPriceKline("btc_cq","5min",10);
         logger.debug("25.获取标记价格的K线数据: {}",JSON.toJSONString(response));
     }
+
+    @Test
+    public void getMarketBbo(){
+        MarketBboResponse response=huobiAPIService.getMarketBbo("");
+        logger.debug("26.获取市场最优挂单: {}",JSON.toJSONString(response));
+    }
+
 }

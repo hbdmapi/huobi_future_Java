@@ -33,6 +33,8 @@ public class HuobiFutureAPIConstants {
     public static final String CONTRACT_LADDER_MARGIN = "/api/v1/contract_ladder_margin"; // 24.获取平台阶梯保证金
     public static final String MARK_PRICE_KLINE = "/index/market/history/mark_price_kline"; // 25.获取标记价格的K线数据
 
+    public static final String MARKET_BBO = "/market/bbo"; // 26.获取市场最优挂单
+
     //合约资产接口
     public static final String CONTRACT_ACCOUNT_INFO = "/api/v1/contract_account_info"; // 1.获取用户账户信息
     public static final String CONTRACT_POSITION_INFO = "/api/v1/contract_position_info"; // 2.获取用户持仓信息

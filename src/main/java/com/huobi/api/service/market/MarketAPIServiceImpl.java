@@ -609,4 +609,26 @@ public class MarketAPIServiceImpl implements MarketAPIService {
         }
         throw new ApiException(body);
     }
+
+    @Override
+    public MarketBboResponse getMarketBbo(String symbol) {
+        String body;
+        try {
+            Map<String, Object> params = new HashMap<>();
+            if (StringUtils.isNotEmpty(symbol)) {
+                params.put("symbol", symbol.toUpperCase());
+            }
+            body = HbdmHttpClient.getInstance().doGet(url_prex + HuobiFutureAPIConstants.MARKET_BBO, params);
+            logger.debug("body:{}",body);
+            MarketBboResponse response = JSON.parseObject(body, MarketBboResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+
+        } catch (Exception e) {
+            body = e.getMessage();
+        }
+        throw new ApiException(body);
+    }
+
 }

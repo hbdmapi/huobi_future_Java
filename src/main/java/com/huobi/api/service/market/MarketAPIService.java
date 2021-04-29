@@ -56,4 +56,6 @@ public interface MarketAPIService {
     ContractLadderMarginResponse getContractLadderMargin(String symbol);
 
     MarkPriceKlineResponse getMarkPriceKline(String symbol,String period,Integer size);
+
+    MarketBboResponse getMarketBbo(String symbol);
 }
