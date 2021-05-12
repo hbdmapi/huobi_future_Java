@@ -51,4 +51,14 @@ public interface TradeAPIService {
     ContractTpslHisordersResponse contractTpslHisordersResponse(ContractTpslHisordersRequset request);
 
     ContractRelationTpslOrderResponse contractRelationTpslOrderResponse(ContractRelationTpslOrderRequest request);
+
+    ContractTrackOrderResponse contractTrackOrderResponse(ContractTrackOrderRequest request);
+
+    ContractTrackCancelResponse contractTrackCancelResponse(ContractTrackCancelRequest request);
+
+    ContractTrackCancelallResponse contractTrackCancelallResponse(ContractTrackCancelallRequest request);
+
+    ContractTrackOpenordersResponse contractTrackOpenordersResponse(ContractTrackOpenordersRequest request);
+
+    ContractTrackHisordersResponse contractTrackHisordersResponse(ContractTrackHisordersRequest request);
 }

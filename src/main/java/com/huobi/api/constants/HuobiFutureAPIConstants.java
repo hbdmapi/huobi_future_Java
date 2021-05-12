@@ -89,6 +89,12 @@ public class HuobiFutureAPIConstants {
     public static final String CONTRACT_TPSL_OPENORDERS="/api/v1/contract_tpsl_openorders"; //22.查询止盈止损订单当前委托
     public static final String CONTRACT_TPSL_HISORDERS="/api/v1/contract_tpsl_hisorders"; //23.查询止盈止损订单历史委托
     public static final String CONTRACT_RELATION_TPSL_ORDER="/api/v1/contract_relation_tpsl_order"; //24.查询开仓单关联的止盈止损订单详情
+    public static final String CONTRACT_TRACK_ORDER = "/api/v1/contract_track_order"; // 跟踪委托订单下单
+
+    public static final String CONTRACT_TRACK_CANCEL= "/api/v1/contract_track_cancel"; // 跟踪委托订单撤单
+    public static final String CONTRACT_TRACK_CANCELALL = "/api/v1/contract_track_cancelall"; // 跟踪委托订单全部撤单
+    public static final String CONTRACT_TRACK_OPENORDERS = "/api/v1/contract_track_openorders"; // 跟踪委托订单当前委托
+    public static final String CONTRACT_TRACK_HISORDERS = "/api/v1/contract_track_hisorders"; // 跟踪委托订单历史委托
 
     //合约划转接口
     public static final String FUTURES_TRANSFER = "/v1/futures/transfer"; // 1.现货-合约账户间进行资金的划转

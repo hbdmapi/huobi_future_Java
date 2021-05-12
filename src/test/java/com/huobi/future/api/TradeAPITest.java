@@ -352,4 +352,74 @@ public class TradeAPITest implements BaseTest {
         ContractRelationTpslOrderResponse response=huobiAPIService.contractRelationTpslOrderResponse(request);
         logger.debug("24.查询开仓单关联的止盈止损订单详情:{}",JSON.toJSONString(response));
     }
+
+    @Test
+    public void contractTrackOrder(){
+        ContractTrackOrderRequest request= ContractTrackOrderRequest.builder()
+                .symbol("btc")
+                .contractType("quarter")
+                .contractCode("btc210326")
+                .direction("buy")
+                .offset("open")
+                .leverRate(75)
+                .volume(BigDecimal.valueOf(1))
+                .activePrice(BigDecimal.valueOf(49111))
+                .callbackRate(BigDecimal.valueOf(0.03))
+                .orderPriceType("optimal_5")
+                .build();
+        ContractTrackOrderResponse response=huobiAPIService.contractTrackOrderResponse(request);
+        logger.debug("25.跟踪委托订单下单:{}",JSON.toJSONString(response));
+    }
+
+    @Test
+    public void contractTrackCancel(){
+        ContractTrackCancelRequest request= ContractTrackCancelRequest.builder()
+                .orderId("826490322254073856")
+                .symbol("btc")
+                .build();
+        ContractTrackCancelResponse response=huobiAPIService.contractTrackCancelResponse(request);
+        logger.debug("26.跟踪委托订单撤单:{}",JSON.toJSONString(response));
+    }
+
+    @Test
+    public void contractTrackCancelall(){
+        ContractTrackCancelallRequest request= ContractTrackCancelallRequest.builder()
+                .symbol("btc")
+                .contractCode("")
+                .contractType("")
+                .direction("")
+                .offset("")
+                .build();
+        ContractTrackCancelallResponse response=huobiAPIService.contractTrackCancelallResponse(request);
+        logger.debug("27.跟踪委托订单全部撤单:{}",JSON.toJSONString(response));
+    }
+
+    @Test
+    public void contractTrackOpenorders(){
+        ContractTrackOpenordersRequest request= ContractTrackOpenordersRequest.builder()
+                .symbol("btc")
+                .contractCode("")
+                .tradeType(0)
+                .pageIndex(1)
+                .pageSize(1)
+                .build();
+        ContractTrackOpenordersResponse response=huobiAPIService.contractTrackOpenordersResponse(request);
+        logger.debug("28.跟踪委托订单当前委托:{}",JSON.toJSONString(response));
+    }
+
+    @Test
+    public void contractTrackHisorders(){
+        ContractTrackHisordersRequest request= ContractTrackHisordersRequest.builder()
+                .symbol("btc")
+                .contractCode("")
+                .createDate(1l)
+                .tradeType(1)
+                .status("0")
+                .pageIndex(1)
+                .pageSize(1)
+                .sortBy("")
+                .build();
+        ContractTrackHisordersResponse response=huobiAPIService.contractTrackHisordersResponse(request);
+        logger.debug("29.跟踪委托订单历史委托:{}",JSON.toJSONString(response));
+    }
 }

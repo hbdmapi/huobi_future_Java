@@ -829,4 +829,157 @@ public class TradeAPIServiceImpl implements TradeAPIService {
         throw new ApiException(body);
     }
 
+    @Override
+    public ContractTrackOrderResponse contractTrackOrderResponse(ContractTrackOrderRequest request) {
+        String body;
+        try{
+            Map<String,Object> params=new HashMap<>();
+            if (StringUtils.isNotEmpty(request.getSymbol())){
+                params.put("symbol", request.getSymbol().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getContractCode())){
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (request.getContractType()!=null){
+                params.put("contract_type",request.getContractType());
+            }
+            if (request.getLeverRate()!=null){
+                params.put("lever_rate",request.getLeverRate());
+            }
+            params.put("direction",request.getDirection());
+            params.put("offset",request.getOffset());
+            params.put("volume",request.getVolume());
+            params.put("callback_rate",request.getCallbackRate());
+            params.put("active_price",request.getActivePrice());
+            params.put("order_price_type", request.getOrderPriceType());
+            body=HbdmHttpClient.getInstance().doPost(api_key,secret_key,url_prex + HuobiFutureAPIConstants.CONTRACT_TRACK_ORDER,params);
+            logger.debug("body:{}",body);
+            ContractTrackOrderResponse response=JSON.parseObject(body,ContractTrackOrderResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())){
+                return response;
+            }
+        }catch(Exception e){
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public ContractTrackCancelResponse contractTrackCancelResponse(ContractTrackCancelRequest request) {
+        String body;
+        try{
+            Map<String,Object> params=new HashMap<>();
+            params.put("symbol", request.getSymbol().toUpperCase());
+            params.put("order_id",request.getOrderId());
+            body=HbdmHttpClient.getInstance().doPost(api_key,secret_key,url_prex + HuobiFutureAPIConstants.CONTRACT_TRACK_CANCEL,params);
+            logger.debug("body:{}",body);
+            ContractTrackCancelResponse response=JSON.parseObject(body,ContractTrackCancelResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())){
+                return response;
+            }
+        }catch(Exception e){
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public ContractTrackCancelallResponse contractTrackCancelallResponse(ContractTrackCancelallRequest request) {
+        String body;
+        try{
+            Map<String,Object> params=new HashMap<>();
+            params.put("symbol", request.getSymbol().toUpperCase());
+            if (request.getContractCode()!=null){
+                params.put("contract_code",request.getContractCode());
+            }
+            if (request.getContractType()!=null){
+                params.put("contract_type",request.getContractType());
+            }
+            if (request.getDirection()!=null){
+                params.put("direction",request.getDirection());
+            }
+            if (request.getOffset()!=null){
+                params.put("offset",request.getOffset());
+            }
+            body=HbdmHttpClient.getInstance().doPost(api_key,secret_key,url_prex + HuobiFutureAPIConstants.CONTRACT_TRACK_CANCELALL,params);
+            logger.debug("body:{}",body);
+            ContractTrackCancelallResponse response=JSON.parseObject(body,ContractTrackCancelallResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())){
+                return response;
+            }
+        }catch(Exception e){
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public ContractTrackOpenordersResponse contractTrackOpenordersResponse(ContractTrackOpenordersRequest request) {
+        String body;
+        try{
+            Map<String,Object> params=new HashMap<>();
+            params.put("symbol", request.getSymbol().toUpperCase());
+            if (request.getContractCode()!=null) {
+                params.put("contract_code", request.getContractCode());
+            }
+            if (request.getPageIndex()!=null){
+                params.put("page_index",request.getPageIndex());
+            }
+            if (request.getTradeType()!=null){
+                params.put("trade_type",request.getTradeType());
+            }
+            if (request.getPageSize()!=null){
+                params.put("page_size",request.getPageSize());
+            }
+            body=HbdmHttpClient.getInstance().doPost(api_key,secret_key,url_prex + HuobiFutureAPIConstants.CONTRACT_TRACK_OPENORDERS,params);
+            logger.debug("body:{}",body);
+            ContractTrackOpenordersResponse response=JSON.parseObject(body,ContractTrackOpenordersResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())){
+                return response;
+            }
+        }catch(Exception e){
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public ContractTrackHisordersResponse contractTrackHisordersResponse(ContractTrackHisordersRequest request) {
+        String body;
+        try{
+            Map<String,Object> params=new HashMap<>();
+            params.put("symbol", request.getSymbol().toUpperCase());
+            if (request.getContractCode()!=null) {
+                params.put("contract_code", request.getContractCode());
+            }
+            if (request.getStatus()!=null){
+                params.put("status",request.getStatus());
+            }
+            if (request.getTradeType()!=null){
+                params.put("trade_type",request.getTradeType());
+            }
+            if (request.getPageIndex()!=null){
+                params.put("page_index",request.getPageIndex());
+            }
+            if (request.getPageSize()!=null){
+                params.put("page_size",request.getPageSize());
+            }
+            if (request.getCreateDate()!=null){
+                params.put("create_date",request.getCreateDate());
+            }
+            if (request.getSortBy()!=null){
+                params.put("sort_by",request.getSortBy());
+            }
+            body=HbdmHttpClient.getInstance().doPost(api_key,secret_key,url_prex + HuobiFutureAPIConstants.CONTRACT_TRACK_HISORDERS,params);
+            logger.debug("body:{}",body);
+            ContractTrackHisordersResponse response=JSON.parseObject(body,ContractTrackHisordersResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())){
+                return response;
+            }
+        }catch(Exception e){
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
 }
