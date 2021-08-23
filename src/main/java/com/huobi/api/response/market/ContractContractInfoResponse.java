@@ -43,7 +43,7 @@ public class ContractContractInfoResponse {
         @SerializedName("contract_type")
         private String contractType;
         @SerializedName("contract_size")
-        private Integer contractSize;
+        private BigDecimal contractSize;
         @SerializedName("price_tick")
         private BigDecimal priceTick;
         @SerializedName("delivery_date")
